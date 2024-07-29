@@ -1,4 +1,6 @@
-package tasks;
+package com.yandex.app.model;
+
+import com.yandex.app.service.TaskStatus;
 
 import java.util.Objects;
 
@@ -33,12 +35,24 @@ public class Task {
         return status;
     }
 
+    public void setStatus(TaskStatus status) {
+        this.status = status;
+    }
+
     public String getName() {
         return name;
     }
 
     public String getDescription() {
         return description;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

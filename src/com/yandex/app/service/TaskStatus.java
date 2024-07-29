@@ -1,4 +1,4 @@
-package tasks;
+package com.yandex.app.service;
 
 public enum TaskStatus {
     NEW,

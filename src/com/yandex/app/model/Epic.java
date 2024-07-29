@@ -1,16 +1,18 @@
-package tasks;
+package com.yandex.app.model;
+
+import com.yandex.app.service.TaskStatus;
 
 import java.util.ArrayList;
 
 public class Epic extends Task {
-    protected ArrayList<Integer> subtasksId = new ArrayList<>();
+    private ArrayList<Integer> subtasksId = new ArrayList<>();
 
-    public Epic(String name, String description, TaskStatus status) {
-        super(name, description, status);
+    public Epic(String name, String description) {
+        super(name, description, TaskStatus.NEW);
     }
 
-    public Epic(int id, String name, String description, TaskStatus status) {
-        super(id, name, description, status);
+    public Epic(int id, String name, String description) {
+        super(id, name, description, TaskStatus.NEW);
     }
 
     public void addSubtaskId(int id) {
@@ -32,6 +34,8 @@ public class Epic extends Task {
     public void setStatus(TaskStatus status) {
         this.status = status;
     }
+
+
 
     @Override
     public String toString() {
