@@ -3,13 +3,14 @@ package com.yandex.app;
 import com.yandex.app.model.Epic;
 import com.yandex.app.model.Subtask;
 import com.yandex.app.model.Task;
-import com.yandex.app.service.TaskStatus;
 import com.yandex.app.service.TaskManager;
+import com.yandex.app.service.TaskStatus;
+import com.yandex.app.service.InMemoryTaskManager;
 
 public class Main {
 
     public static void main(String[] args) {
-        TaskManager manager = new TaskManager();
+        TaskManager manager = new InMemoryTaskManager();
 
         Task task1 = new Task("task 1", "description 1", TaskStatus.NEW);
         manager.addNewTask(task1);
@@ -29,9 +30,8 @@ public class Main {
         Subtask subtask3 = new Subtask("subtask 3", "description 3", TaskStatus.NEW, 6);
         manager.addNewSubtask(subtask3);
 
-        System.out.println("Добавление новых задач: \n" + manager.getAllTasks().toString());
-        System.out.println("\n" + manager.getAllEpics().toString());
-        System.out.println("\n" + manager.getAllSubtasks().toString());
+        System.out.println("(Добавление новых задач)");
+        manager.printAllTasks(manager);
 
         task2 = new Task(2, "new task 2", "new description 2", TaskStatus.DONE);
         manager.updateTask(task2);
@@ -43,15 +43,21 @@ public class Main {
         manager.updateSubtask(subtask2);
         manager.updateSubtask(subtask3);
 
-        System.out.println("\nИзменение статусов: \n" + manager.getAllTasks().toString());
-        System.out.println("\n" + manager.getAllEpics().toString());
-        System.out.println("\n" + manager.getAllSubtasks().toString());
+        System.out.println("\n(Изменение статусов)");
+        manager.printAllTasks(manager);
 
         manager.deleteTaskById(1);
         manager.deleteEpicById(3);
 
-        System.out.println("\nУдаление одной задачи и одного эпика: \n" + manager.getAllTasks().toString());
-        System.out.println("\n" + manager.getAllEpics().toString());
-        System.out.println("\n" + manager.getAllSubtasks().toString());
+        System.out.println("\n(Удаление одной задачи и одного эпика)");
+        manager.printAllTasks(manager);
+
+        manager.getTaskById(2);
+        manager.getSubtaskById(7);
+
+        System.out.println("\n(Добавление истории)");
+        manager.printAllTasks(manager);
+
+
     }
 }
