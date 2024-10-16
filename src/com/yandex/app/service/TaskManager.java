@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface TaskManager {
-    ArrayList<Task> getAllTasks();
+    List<Task> getAllTasks();
 
-    ArrayList<Epic> getAllEpics();
+    List<Epic> getAllEpics();
 
-    ArrayList<Subtask> getAllSubtasks();
+    List<Subtask> getAllSubtasks();
 
     //добавление новых задач
     int addNewTask(Task task);
@@ -52,5 +52,5 @@ public interface TaskManager {
     void printAllTasks(TaskManager manager);
 
     //получение списка всех подзадач эпика
-    ArrayList<Subtask> getAllEpicSubtasks(int epicId);
+    List<Subtask> getAllEpicSubtasks(int epicId);
 }

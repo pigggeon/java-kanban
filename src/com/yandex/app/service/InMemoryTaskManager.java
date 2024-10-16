@@ -7,29 +7,30 @@ import com.yandex.app.model.Task;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InMemoryTaskManager implements TaskManager {
     private int generatorId = 0;
-    private final HashMap<Integer, Task> allTasks = new HashMap<>();
-    private final HashMap<Integer, Subtask> allSubtasks = new HashMap<>();
-    private final HashMap<Integer, Epic> allEpics = new HashMap<>();
+    private final Map<Integer, Task> allTasks = new HashMap<>();
+    private final Map<Integer, Subtask> allSubtasks = new HashMap<>();
+    private final Map<Integer, Epic> allEpics = new HashMap<>();
 
-    InMemoryHistoryManager historyManager = new InMemoryHistoryManager();
+    InMemoryHistoryManager historyManager = Managers.getDefaultHistory();
 
 //получение списка всех задач
 
     @Override
-    public ArrayList<Task> getAllTasks() {
+    public List<Task> getAllTasks() {
         return new ArrayList<>(allTasks.values());
     }
 
     @Override
-    public ArrayList<Epic> getAllEpics() {
+    public List<Epic> getAllEpics() {
         return new ArrayList<>(allEpics.values());
     }
 
     @Override
-    public ArrayList<Subtask> getAllSubtasks() {
+    public List<Subtask> getAllSubtasks() {
         return new ArrayList<>(allSubtasks.values());
     }
 
@@ -185,7 +186,7 @@ public class InMemoryTaskManager implements TaskManager {
 
 //получение списка всех подзадач эпика
     @Override
-    public ArrayList<Subtask> getAllEpicSubtasks(int epicId){
+    public List<Subtask> getAllEpicSubtasks(int epicId){
         Epic epic = allEpics.get(epicId);
         ArrayList<Integer> subsIds = new ArrayList<>(epic.getSubtasksId());
         ArrayList<Subtask> listOfEpicSubtask = new ArrayList<>();
