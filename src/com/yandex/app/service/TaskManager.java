@@ -51,6 +51,8 @@ public interface TaskManager {
 
     void printAllTasks(TaskManager manager);
 
+    List<Task> getHistory();
+
     //получение списка всех подзадач эпика
     List<Subtask> getAllEpicSubtasks(int epicId);
 }

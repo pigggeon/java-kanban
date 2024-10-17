@@ -91,21 +91,18 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public Task getTaskById(int id) {
         historyManager.historyList.add(allTasks.get(id));
-        historyManager.checkHistoryLength();
         return allTasks.get(id);
     }
 
     @Override
     public Subtask getSubtaskById(int id) {
         historyManager.historyList.add(allSubtasks.get(id));
-        historyManager.checkHistoryLength();
         return allSubtasks.get(id);
     }
 
     @Override
     public Epic getEpicById(int id) {
         historyManager.historyList.add(allEpics.get(id));
-        historyManager.checkHistoryLength();
         return allEpics.get(id);
     }
 
@@ -221,6 +218,11 @@ public class InMemoryTaskManager implements TaskManager {
         }
     }
 
+    @Override
+    public List<Task> getHistory() {
+        return historyManager.getHistory();
+    }
+
     //обновление статуса эпика
     private void updateEpicStatus(Epic epic) {
         ArrayList<Integer> subtasksIds = new ArrayList<>(epic.getSubtasksId());
@@ -253,5 +255,4 @@ public class InMemoryTaskManager implements TaskManager {
             epic.setStatus(TaskStatus.IN_PROGRESS);
         }
     }
-
 }

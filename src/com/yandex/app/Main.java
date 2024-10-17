@@ -57,7 +57,5 @@ public class Main {
 
         System.out.println("\n(Добавление истории)");
         manager.printAllTasks(manager);
-
-
     }
 }
