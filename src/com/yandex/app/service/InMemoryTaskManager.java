@@ -90,19 +90,19 @@ public class InMemoryTaskManager implements TaskManager {
 //получение задач по id
     @Override
     public Task getTaskById(int id) {
-        historyManager.historyList.add(allTasks.get(id));
+        historyManager.add(allTasks.get(id));
         return allTasks.get(id);
     }
 
     @Override
     public Subtask getSubtaskById(int id) {
-        historyManager.historyList.add(allSubtasks.get(id));
+        historyManager.add(allSubtasks.get(id));
         return allSubtasks.get(id);
     }
 
     @Override
     public Epic getEpicById(int id) {
-        historyManager.historyList.add(allEpics.get(id));
+        historyManager.add(allEpics.get(id));
         return allEpics.get(id);
     }
 
